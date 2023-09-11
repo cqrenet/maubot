@@ -58,4 +58,9 @@ COPY --from=frontend-builder /frontend/build /opt/maubot/frontend
 ENV UID=1337 GID=1337 XDG_CONFIG_HOME=/data
 VOLUME /data
 
+# Install dependencies for inviterbot (https://github.com/SAPUCC/inviterbot/)
+RUN apk add gcc
+RUN pip install --upgrade pip
+RUN pip install azure-identity msgraph-core ldap3
+
 CMD ["/opt/maubot/docker/run.sh"]
