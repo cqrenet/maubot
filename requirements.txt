@@ -15,7 +15,6 @@ colorama>=0.4,<0.5
 questionary>=1,<2
 jinja2>=2,<4
 
-mautrix~=0.15.8
 pytz~=2022.1
 maubot~=0.3.1
 ldap3~=2.9.1
