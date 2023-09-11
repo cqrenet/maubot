@@ -14,3 +14,8 @@ click>=7,<9
 colorama>=0.4,<0.5
 questionary>=1,<2
 jinja2>=2,<4
+
+pytz~=2022.1
+ldap3~=2.9.1
+azure-identity~=1.8.0
+msgraph-core~=0.2.2
