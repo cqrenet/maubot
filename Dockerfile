@@ -47,7 +47,7 @@ COPY optional-requirements.txt /opt/maubot/optional-requirements.txt
 WORKDIR /opt/maubot
 RUN apk add --virtual .build-deps python3-dev build-base git \
     && pip3 install -r requirements.txt -r optional-requirements.txt \
-        dateparser langdetect python-gitlab pyquery tzlocal \
+        dateparser langdetect python-gitlab pyquery tzlocal azure-identity msgraph-core ldap3 \
     && apk del .build-deps
 # TODO also remove dateparser, langdetect and pyquery when maubot supports installing dependencies
 
@@ -57,10 +57,5 @@ COPY ./docker/mbc.sh /usr/local/bin/mbc
 COPY --from=frontend-builder /frontend/build /opt/maubot/frontend
 ENV UID=1337 GID=1337 XDG_CONFIG_HOME=/data
 VOLUME /data
-
-# Install dependencies for inviterbot (https://github.com/SAPUCC/inviterbot/)
-RUN apk add gcc
-RUN pip install --upgrade pip
-RUN pip install azure-identity msgraph-core ldap3
 
 CMD ["/opt/maubot/docker/run.sh"]
